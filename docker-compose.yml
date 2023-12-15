@@ -7,7 +7,8 @@ services:
     image: proxy
     container_name: proxy
     ports:
-     - "8080:80"
+     - "443:443"
+     - "80:80"
     depends_on:
      - wordpress
     networks:
@@ -19,12 +20,9 @@ services:
      dockerfile: Dockerfile
     image: bind9
     container_name: bind9
-    dns:
-      - 172.22.0.2
     ports:
-     - "53:53"
-    depends_on:
-     - proxy
+     - "53:53/udp"
+
 
 
   db:
@@ -49,22 +47,24 @@ services:
 
   wordpress:
     image: wordpress:latest
-    ports:
-      - 80:80
     restart: always
     environment:
       - WORDPRESS_DB_HOST=db
       - WORDPRESS_DB_USER=wordpress
       - WORDPRESS_DB_PASSWORD=wordpress
       - WORDPRESS_DB_NAME=wordpress
+    volumes:
+      - wordpress:/var/www/html
     networks:
      - asa-network
+
 networks:
  asa-network:
   driver: bridge
 
 volumes:
   db_data:
+  wordpress:
 
   
     

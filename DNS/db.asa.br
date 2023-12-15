@@ -9,7 +9,7 @@ $TTL 30
 
 @	IN 	NS	@	
 @	IN 	MX	5 	mail
-@		IN	A	192.168.0.115
-mail	IN	A	192.168.0.115
-@		IN	A	192.168.0.115
+@		IN	A	10.25.2.30
+mail	IN	A	10.25.2.30
+@		IN	A	10.25.2.30
 www		IN	CNAME @
