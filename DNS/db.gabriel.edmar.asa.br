@@ -1,0 +1,15 @@
+$TTL 30
+@ 	IN	SOA	gabriel.edmar.asa.br. root (
+	2022112309 	;serial
+	120		;refresh
+	60		;retry
+	300		;expiry
+	30		; Minimum
+	)
+
+@	IN 	NS	@	
+@	IN 	MX	5 	mail
+@		IN	A	10.25.2.109
+mail	IN	A	10.25.2.109
+@		IN	A	10.25.2.109
+www		IN	CNAME @

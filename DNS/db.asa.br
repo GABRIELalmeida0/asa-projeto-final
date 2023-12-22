@@ -1,6 +1,7 @@
+$ORIGIN portal.asa.br.
 $TTL 30
-@ 	IN	SOA	@ root (
-	2022112308 	;serial
+@ 	IN	SOA	portal.asa.br. root (
+	2022112309 	;serial
 	120		;refresh
 	60		;retry
 	300		;expiry
@@ -9,7 +10,12 @@ $TTL 30
 
 @	IN 	NS	@	
 @	IN 	MX	5 	mail
-@		IN	A	10.25.2.30
-mail	IN	A	10.25.2.30
-@		IN	A	10.25.2.30
+@		IN	A	10.25.2.109
+mail	IN	A	10.25.2.109
+@		IN	A	10.25.2.109
+ns1sub	IN	A	10.24.21.34 ;ip de edmar
 www		IN	CNAME @
+
+$ORIGIN diatinf.portal.asa.br.
+@       IN  NS  diatinf.portal.asa.br.
+ns1     IN  A   10.24.21.34 ;ip de edmar

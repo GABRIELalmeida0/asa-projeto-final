@@ -1,17 +1,24 @@
+;$ORIGIN portal.asa.br.
 ;
-; BIND data file for local loopback interface
+;BIND data file for local loopback interface
 ;
 $TTL	604800
-@	IN	SOA	portal.asa.br. root.portal.asa.br. (
-			    350		; Serial
+@	IN	SOA	portal.asa.br. root.asa.br. (
+			    356		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
 			 604800 )	; Negative Cache TTL
 ;
-@	IN  MX 10 mail.asa.br.
-@	IN	NS	ns1.asa.br.
+@	IN  MX 10 mail
+@	IN	NS	@
 
-ns1			A	192.168.0.115
-mail		A 	192.168.0.115
-www			CNAME	ns1
+ns1			IN A	10.25.2.109
+ns1sub		A	10.24.21.34;ip de edmar
+mail		IN A 	10.25.2.109
+www			IN CNAME	ns1
+;
+;
+$ORIGIN diatinf.portal.asa.br.
+@           IN      NS              diatinf.portal.asa.br.
+ns1         IN      A               172.16.0.3;ip de edmar
