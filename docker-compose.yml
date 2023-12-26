@@ -23,8 +23,6 @@ services:
     ports:
      - "53:53/udp"
 
-
-
   db:
     # We use a mariadb image which supports both amd64 & arm64 architecture
     image: mariadb:10.6.4-focal
@@ -58,6 +56,39 @@ services:
     networks:
      - asa-network
 
+  db2:
+    # We use a mariadb image which supports both amd64 & arm64 architecture
+    image: mariadb:10.6.4-focal
+    # If you really want to use MySQL, uncomment the following line
+    #image: mysql:8.0.27
+    command: '--default-authentication-plugin=mysql_native_password'
+    volumes:
+      - db_data:/var/lib/mysql2
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=somewordpress
+      - MYSQL_DATABASE=wordpress
+      - MYSQL_USER=wordpress
+      - MYSQL_PASSWORD=wordpress
+    expose:
+      - 3306
+      - 33060
+    networks:
+     - asa-network
+
+  wordpress2:
+    image: wordpress:latest
+    restart: always
+    environment:
+      - WORDPRESS_DB_HOST=db
+      - WORDPRESS_DB_USER=wordpress
+      - WORDPRESS_DB_PASSWORD=wordpress
+      - WORDPRESS_DB_NAME=wordpress
+    volumes:
+      - wordpress:/var/www/html
+    networks:
+     - asa-network
+
 networks:
  asa-network:
   driver: bridge
@@ -65,6 +96,3 @@ networks:
 volumes:
   db_data:
   wordpress:
-
-  
-    
