@@ -13,5 +13,6 @@ RUN apt-get update \
 COPY named.conf.local /etc/bind
 
 COPY db.asa.br /etc/bind
+COPY db.gabriel.edmar.asa.br /etc/bind
 
-ENTRYPOINT service bind9 start 2>/dev/null && /bin/bash -c "while :; do sleep 10; done"
+ENTRYPOINT service bind9 start  && /bin/bash -c "while :; do sleep 10; done"

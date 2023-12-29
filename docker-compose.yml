@@ -37,9 +37,6 @@ services:
       - MYSQL_DATABASE=wordpress
       - MYSQL_USER=wordpress
       - MYSQL_PASSWORD=wordpress
-    expose:
-      - 3306
-      - 33060
     networks:
      - asa-network
 
@@ -66,13 +63,10 @@ services:
       - db_data:/var/lib/mysql2
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=somewordpress
-      - MYSQL_DATABASE=wordpress
-      - MYSQL_USER=wordpress
-      - MYSQL_PASSWORD=wordpress
-    expose:
-      - 3306
-      - 33060
+      - MYSQL_ROOT_PASSWORD=somewordpress2
+      - MYSQL_DATABASE=wordpress2
+      - MYSQL_USER=wordpress2
+      - MYSQL_PASSWORD=wordpress2
     networks:
      - asa-network
 
@@ -80,10 +74,10 @@ services:
     image: wordpress:latest
     restart: always
     environment:
-      - WORDPRESS_DB_HOST=db
-      - WORDPRESS_DB_USER=wordpress
-      - WORDPRESS_DB_PASSWORD=wordpress
-      - WORDPRESS_DB_NAME=wordpress
+      - WORDPRESS_DB_HOST=db2
+      - WORDPRESS_DB_USER=wordpress2
+      - WORDPRESS_DB_PASSWORD=wordpress2
+      - WORDPRESS_DB_NAME=wordpress2
     volumes:
       - wordpress:/var/www/html
     networks:
